@@ -16,15 +16,34 @@ body {
     max-width: 600px;
 }
 
+.search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 #tickerInput {
     padding: 10px;
     font-size: 16px;
-    width: 100%;
+    width: calc(100% - 30px); /* Adjusted width to accommodate the clear button */
     box-sizing: border-box;
     border: 1px solid #ddd;
-    border-radius: 8px;
+    border-radius: 8px 0 0 8px; /* Rounded border on the left */
     margin-bottom: 0; /* Remove bottom margin */
-    box-shadow: none; /* Remove any box shadow */
+}
+
+#clearButton {
+    padding: 10px;
+    background-color: #ddd;
+    color: #333;
+    border: none;
+    border-radius: 0 8px 8px 0; /* Rounded border on the right */
+    cursor: pointer;
+}
+
+#clearButton:hover {
+    background-color: #ccc;
 }
 
 .suggestions, .commands {
