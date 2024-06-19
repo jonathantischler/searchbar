@@ -28,9 +28,10 @@ body {
     font-size: 16px;
     width: calc(100% - 30px); /* Adjusted width to accommodate the clear button */
     box-sizing: border-box;
-    border: 1px solid #ddd;
+    border: none; /* Remove border */
     border-radius: 8px 0 0 8px; /* Rounded border on the left */
     margin-bottom: 0; /* Remove bottom margin */
+    background-color: #ddd; /* Background color for input */
 }
 
 .clear-button {
@@ -51,7 +52,7 @@ body {
     padding: 0;
     margin: 0;
     background-color: white;
-    border: 1px solid #ddd;
+    border: none; /* Remove border */
     border-radius: 8px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     margin-top: 0; /* Remove top margin */
@@ -60,14 +61,14 @@ body {
 .suggestion-item, .command-item {
     padding: 10px;
     cursor: pointer;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #ddd; /* Border for individual items */
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
 .suggestion-item:last-child, .command-item:last-child {
-    border-bottom: none;
+    border-bottom: none; /* Remove border from last item */
 }
 
 .suggestion-item:hover, .command-item:hover {
