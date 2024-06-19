@@ -10,14 +10,14 @@
     <div class="search-container">
         <h1>Stock Ticker Search</h1>
         <div class="search-box">
-            <input type="text" id="tickerInput" placeholder="Enter stock ticker or press '/' for commands..." onkeyup="handleInput()">
-            <button id="clearButton" onclick="clearInput()">x</button>
+            <input type="text" id="tickerInput" class="ticker-input" placeholder="Enter stock ticker or press '/' for commands..." onkeyup="handleInput()">
+            <button id="clearButton" class="clear-button" onclick="clearInput()">x</button>
         </div>
         <ul id="suggestions" class="suggestions"></ul>
         <ul id="commands" class="commands"></ul>
     </div>
 
-    <br>
+   <br>
     <br>
     <p>This is a prototype of a more functional search bar. It currently takes as input AAPL, AMZN, TSLA, MSFT and GOOGL.</p>
     <p>For the moment it will direct you to various finance web pages, but <b><i>imagine</i></b> if it directed you to different places in the portal.</p>
@@ -28,4 +28,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
