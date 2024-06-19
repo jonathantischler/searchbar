@@ -18,8 +18,9 @@ body {
 
 .search-box {
     position: relative;
-    display: inline-block;
-    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .ticker-input {
@@ -33,10 +34,6 @@ body {
 }
 
 .clear-button {
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
     padding: 10px;
     background-color: #ddd;
     color: #333;
