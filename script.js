@@ -58,3 +58,9 @@ function handleInput() {
         });
     }
 }
+
+function clearInput() {
+    document.getElementById('tickerInput').value = ''; // Clear the input field
+    document.getElementById('suggestions').innerHTML = ''; // Clear suggestions
+    document.getElementById('commands').innerHTML = ''; // Clear commands
+}
