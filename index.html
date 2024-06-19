@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Ticker Search</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="search-container">
+        <h1>Stock Ticker Search</h1>
+        <input type="text" id="tickerInput" placeholder="Enter stock ticker or press '/' for commands..." onkeyup="handleInput()">
+        <ul id="suggestions" class="suggestions"></ul>
+        <ul id="commands" class="commands"></ul>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
