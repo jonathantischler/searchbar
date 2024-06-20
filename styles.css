@@ -31,7 +31,8 @@ body {
     border: none; /* Remove border */
     border-radius: 8px 0 0 8px; /* Rounded border on the left */
     margin-bottom: 0; /* Remove bottom margin */
-    background-color: #ddd; /* Background color for input */
+    background-color: white; /* Set background color to white */
+    color: #333; /* Ensure text color is visible */
 }
 
 .clear-button {
