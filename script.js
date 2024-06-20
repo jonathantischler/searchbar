@@ -35,7 +35,7 @@ function handleInput() {
                 commandsContainer.appendChild(li);
             });
         } else {
-            displayNotFound();
+            displayNotFound(commandsContainer);
         }
     } else if (input) {
         const filteredStocks = stockList.filter(stock => 
@@ -65,15 +65,16 @@ function handleInput() {
                 suggestionsContainer.appendChild(li);
             });
         } else {
-            displayNotFound();
+            displayNotFound(suggestionsContainer);
         }
-    } else {
-        displayNotFound();
     }
 }
 
-function displayNotFound() {
-    document.getElementById('tickerInput').value = 'Not Found';
+function displayNotFound(container) {
+    const li = document.createElement('li');
+    li.className = 'not-found';
+    li.textContent = 'Not Found';
+    container.appendChild(li);
 }
 
 function clearInput() {
