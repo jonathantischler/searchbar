@@ -27,22 +27,31 @@ function handleInput() {
             command.name.toUpperCase().includes(input.substring(1))
         );
 
-        if (filteredCommands.length > 0) {
-            filteredCommands.forEach(command => {
-                const li = document.createElement('li');
-                li.className = 'command-item';
-                li.innerHTML = `<a href="${command.url}" target="_blank" class="button">${command.name}</a>`;
-                commandsContainer.appendChild(li);
-            });
-        } else {
-            displayNotFound(commandsContainer);
+        filteredCommands.forEach(command => {
+            const li = document.createElement('li');
+            li.className = 'command-item';
+            li.innerHTML = `<a href="${command.url}" target="_blank">${command.name}</a>`;
+            commandsContainer.appendChild(li);
+        });
+    } else if (input.startsWith('ASK A QUESTION')) {
+        // Allow the user to type a question
+        if (event.key === 'Enter') {
+            const li = document.createElement('li');
+            li.className = 'suggestion-item';
+            li.innerText = 'AI response goes here';
+            suggestionsContainer.appendChild(li);
         }
     } else if (input) {
         const filteredStocks = stockList.filter(stock => 
             stock.ticker.startsWith(input) || stock.name.toUpperCase().includes(input)
         );
 
-        if (filteredStocks.length > 0) {
+        if (filteredStocks.length === 0) {
+            const li = document.createElement('li');
+            li.className = 'suggestion-item';
+            li.innerText = 'Not Found';
+            suggestionsContainer.appendChild(li);
+        } else {
             filteredStocks.forEach(stock => {
                 const li = document.createElement('li');
                 li.className = 'suggestion-item';
@@ -64,17 +73,19 @@ function handleInput() {
                 `;
                 suggestionsContainer.appendChild(li);
             });
-        } else {
-            displayNotFound(suggestionsContainer);
         }
     }
 }
 
-function displayNotFound(container) {
-    const li = document.createElement('li');
-    li.className = 'not-found';
-    li.textContent = 'Not Found';
-    container.appendChild(li);
+function handleKeydown(event) {
+    const tickerInput = document.getElementById('tickerInput');
+    if (event.key === ' ') {
+        tickerInput.style.backgroundImage = 'url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'20\'><text x=\'0\' y=\'15\' fill=\'gray\' font-family=\'Arial\' font-size=\'16\'>Ask a question</text></svg>")';
+        tickerInput.style.backgroundRepeat = 'no-repeat';
+        tickerInput.style.backgroundPosition = 'center right';
+    } else if (event.key === 'Enter') {
+        handleInput();
+    }
 }
 
 function clearInput() {
@@ -82,3 +93,7 @@ function clearInput() {
     document.getElementById('suggestions').innerHTML = ''; // Clear suggestions
     document.getElementById('commands').innerHTML = ''; // Clear commands
 }
+
+document.getElementById('tickerInput').addEventListener('keydown', handleKeydown);
+document.getElementById('tickerInput').addEventListener('input', handleInput);
+document.getElementById('clearButton').addEventListener('click', clearInput);
