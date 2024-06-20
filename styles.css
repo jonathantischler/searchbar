@@ -85,21 +85,4 @@ body {
 .button {
     padding: 5px 10px;
     background-color: transparent;
-    color: #333; /* Dark grey text */
-    text-decoration: none;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 14px;
-    transition: background-color 0.3s, border-color 0.3s;
-}
-
-.button:hover {
-    background-color: #f1f1f1;
-    border-color: #333; /* Dark grey border on hover */
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    right: 
+    color: #333; /*
