@@ -14,7 +14,7 @@ const commandList = [
     { name: 'Aggregates', url: 'https://www.bing.com' }
 ];
 
-function handleInput(event) {
+function handleInput() {
     const input = document.getElementById('tickerInput').value.trim().toUpperCase();
     const suggestionsContainer = document.getElementById('suggestions');
     const commandsContainer = document.getElementById('commands');
@@ -22,39 +22,27 @@ function handleInput(event) {
     suggestionsContainer.innerHTML = ''; // Clear previous suggestions
     commandsContainer.innerHTML = ''; // Clear previous commands
 
-    // Clear the background image when user types
-    document.getElementById('tickerInput').style.backgroundImage = 'none';
-
     if (input.startsWith('/')) {
         const filteredCommands = commandList.filter(command => 
             command.name.toUpperCase().includes(input.substring(1))
         );
 
-        filteredCommands.forEach(command => {
-            const li = document.createElement('li');
-            li.className = 'command-item';
-            li.innerHTML = `<a href="${command.url}" target="_blank">${command.name}</a>`;
-            commandsContainer.appendChild(li);
-        });
-    } else if (input.startsWith('ASK A QUESTION')) {
-        // Allow the user to type a question
-        if (event.key === 'Enter') {
-            const li = document.createElement('li');
-            li.className = 'suggestion-item';
-            li.innerText = 'AI response goes here';
-            suggestionsContainer.appendChild(li);
+        if (filteredCommands.length > 0) {
+            filteredCommands.forEach(command => {
+                const li = document.createElement('li');
+                li.className = 'command-item';
+                li.innerHTML = `<a href="${command.url}" target="_blank" class="button">${command.name}</a>`;
+                commandsContainer.appendChild(li);
+            });
+        } else {
+            displayNotFound(commandsContainer);
         }
     } else if (input) {
         const filteredStocks = stockList.filter(stock => 
             stock.ticker.startsWith(input) || stock.name.toUpperCase().includes(input)
         );
 
-        if (filteredStocks.length === 0) {
-            const li = document.createElement('li');
-            li.className = 'suggestion-item';
-            li.innerText = 'Not Found';
-            suggestionsContainer.appendChild(li);
-        } else {
+        if (filteredStocks.length > 0) {
             filteredStocks.forEach(stock => {
                 const li = document.createElement('li');
                 li.className = 'suggestion-item';
@@ -76,35 +64,21 @@ function handleInput(event) {
                 `;
                 suggestionsContainer.appendChild(li);
             });
+        } else {
+            displayNotFound(suggestionsContainer);
         }
     }
 }
 
-function handleKeydown(event) {
-    const tickerInput = document.getElementById('tickerInput');
-    if (event.key === ' ') {
-        tickerInput.style.backgroundImage = 'url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'20\'><text x=\'0\' y=\'15\' fill=\'gray\' font-family=\'Arial\' font-size=\'16\'>Ask a question</text></svg>")';
-        tickerInput.style.backgroundRepeat = 'no-repeat';
-        tickerInput.style.backgroundPosition = 'center right';
-    } else if (event.key === 'Enter') {
-        handleInput(event);
-    }
-}
-
-function handleFocus() {
-    const tickerInput = document.getElementById('tickerInput');
-    tickerInput.style.backgroundImage = 'none'; // Clear the background image
+function displayNotFound(container) {
+    const li = document.createElement('li');
+    li.className = 'not-found';
+    li.textContent = 'Not Found';
+    container.appendChild(li);
 }
 
 function clearInput() {
-    const tickerInput = document.getElementById('tickerInput');
-    tickerInput.value = ''; // Clear the input field
-    tickerInput.style.backgroundImage = 'none'; // Clear the background image
+    document.getElementById('tickerInput').value = ''; // Clear the input field
     document.getElementById('suggestions').innerHTML = ''; // Clear suggestions
     document.getElementById('commands').innerHTML = ''; // Clear commands
 }
-
-document.getElementById('tickerInput').addEventListener('keydown', handleKeydown);
-document.getElementById('tickerInput').addEventListener('input', handleInput);
-document.getElementById('tickerInput').addEventListener('focus', handleFocus);
-document.getElementById('clearButton').addEventListener('click', clearInput);
