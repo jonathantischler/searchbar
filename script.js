@@ -48,7 +48,7 @@ function handleInput() {
                     <a href="https://www.google.com/finance/quote/${stock.ticker}" class="button" target="_blank">Momentum</a>
                     <a href="https://www.marketwatch.com/investing/stock/${stock.ticker}" class="button" target="_blank">Valuation</a>
                     <div class="dropdown">
-                        <button class="button">Other</button>
+                        <button class="button">More</button>
                         <div class="dropdown-content">
                             <a href="https://www.bloomberg.com/quote/${stock.ticker}:US" target="_blank">Flex Valuation</a>
                             <a href="https://www.cnbc.com/quotes/${stock.ticker}" target="_blank">Peer Analysis</a>
