@@ -9,8 +9,8 @@ const stockList = [
 const commandList = [
     { name: 'New Screen', url: 'https://www.google.com' },
     { name: 'View Existing Screen', url: 'https://www.google.com' },
-    { name: 'New Portfolio', url: 'https://www.bing.com' }
-    { name: 'View Existing Portfolio', url: 'https://www.bing.com' }
+    { name: 'New Portfolio', url: 'https://www.bing.com' },
+    { name: 'View Existing Portfolio', url: 'https://www.bing.com' },
     { name: 'Aggregates', url: 'https://www.bing.com' }
 ];
 
