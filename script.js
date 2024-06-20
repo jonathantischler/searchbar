@@ -27,39 +27,53 @@ function handleInput() {
             command.name.toUpperCase().includes(input.substring(1))
         );
 
-        filteredCommands.forEach(command => {
-            const li = document.createElement('li');
-            li.className = 'command-item';
-            li.innerHTML = `<a href="${command.url}" target="_blank" class="button">${command.name}</a>`;
-            commandsContainer.appendChild(li);
-        });
+        if (filteredCommands.length > 0) {
+            filteredCommands.forEach(command => {
+                const li = document.createElement('li');
+                li.className = 'command-item';
+                li.innerHTML = `<a href="${command.url}" target="_blank" class="button">${command.name}</a>`;
+                commandsContainer.appendChild(li);
+            });
+        } else {
+            displayNotFound();
+        }
     } else if (input) {
         const filteredStocks = stockList.filter(stock => 
             stock.ticker.startsWith(input) || stock.name.toUpperCase().includes(input)
         );
 
-        filteredStocks.forEach(stock => {
-            const li = document.createElement('li');
-            li.className = 'suggestion-item';
-            li.innerHTML = `
-                <span>${stock.ticker} - ${stock.name}</span>
-                <div class="buttons">
-                    <a href="https://finance.yahoo.com/quote/${stock.ticker}" class="button" target="_blank">Operations</a>
-                    <a href="https://www.google.com/finance/quote/${stock.ticker}" class="button" target="_blank">Momentum</a>
-                    <a href="https://www.marketwatch.com/investing/stock/${stock.ticker}" class="button" target="_blank">Valuation</a>
-                    <div class="dropdown">
-                        <button class="button">More</button>
-                        <div class="dropdown-content">
-                            <a href="https://www.bloomberg.com/quote/${stock.ticker}:US" target="_blank">Flex Valuation</a>
-                            <a href="https://www.cnbc.com/quotes/${stock.ticker}" target="_blank">Peer Analysis</a>
-                            <a href="https://www.reuters.com/markets/companies/${stock.ticker}" target="_blank">Business Resilience</a>
+        if (filteredStocks.length > 0) {
+            filteredStocks.forEach(stock => {
+                const li = document.createElement('li');
+                li.className = 'suggestion-item';
+                li.innerHTML = `
+                    <span>${stock.ticker} - ${stock.name}</span>
+                    <div class="buttons">
+                        <a href="https://finance.yahoo.com/quote/${stock.ticker}" class="button" target="_blank">Operations</a>
+                        <a href="https://www.google.com/finance/quote/${stock.ticker}" class="button" target="_blank">Momentum</a>
+                        <a href="https://www.marketwatch.com/investing/stock/${stock.ticker}" class="button" target="_blank">Valuation</a>
+                        <div class="dropdown">
+                            <button class="button">More</button>
+                            <div class="dropdown-content">
+                                <a href="https://www.bloomberg.com/quote/${stock.ticker}:US" target="_blank">Flex Valuation</a>
+                                <a href="https://www.cnbc.com/quotes/${stock.ticker}" target="_blank">Peer Analysis</a>
+                                <a href="https://www.reuters.com/markets/companies/${stock.ticker}" target="_blank">Business Resilience</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            `;
-            suggestionsContainer.appendChild(li);
-        });
+                `;
+                suggestionsContainer.appendChild(li);
+            });
+        } else {
+            displayNotFound();
+        }
+    } else {
+        displayNotFound();
     }
+}
+
+function displayNotFound() {
+    document.getElementById('tickerInput').value = 'Not Found';
 }
 
 function clearInput() {
