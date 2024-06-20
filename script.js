@@ -30,7 +30,7 @@ function handleInput() {
         filteredCommands.forEach(command => {
             const li = document.createElement('li');
             li.className = 'command-item';
-            li.innerHTML = `<a href="${command.url}" target="_blank">${command.name}</a>`;
+            li.innerHTML = `<a href="${command.url}" target="_blank" class="button">${command.name}</a>`;
             commandsContainer.appendChild(li);
         });
     } else if (input) {
