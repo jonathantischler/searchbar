@@ -14,13 +14,16 @@ const commandList = [
     { name: 'Aggregates', url: 'https://www.bing.com' }
 ];
 
-function handleInput() {
+function handleInput(event) {
     const input = document.getElementById('tickerInput').value.trim().toUpperCase();
     const suggestionsContainer = document.getElementById('suggestions');
     const commandsContainer = document.getElementById('commands');
     
     suggestionsContainer.innerHTML = ''; // Clear previous suggestions
     commandsContainer.innerHTML = ''; // Clear previous commands
+
+    // Clear the background image when user types
+    document.getElementById('tickerInput').style.backgroundImage = 'none';
 
     if (input.startsWith('/')) {
         const filteredCommands = commandList.filter(command => 
@@ -84,16 +87,24 @@ function handleKeydown(event) {
         tickerInput.style.backgroundRepeat = 'no-repeat';
         tickerInput.style.backgroundPosition = 'center right';
     } else if (event.key === 'Enter') {
-        handleInput();
+        handleInput(event);
     }
 }
 
+function handleFocus() {
+    const tickerInput = document.getElementById('tickerInput');
+    tickerInput.style.backgroundImage = 'none'; // Clear the background image
+}
+
 function clearInput() {
-    document.getElementById('tickerInput').value = ''; // Clear the input field
+    const tickerInput = document.getElementById('tickerInput');
+    tickerInput.value = ''; // Clear the input field
+    tickerInput.style.backgroundImage = 'none'; // Clear the background image
     document.getElementById('suggestions').innerHTML = ''; // Clear suggestions
     document.getElementById('commands').innerHTML = ''; // Clear commands
 }
 
 document.getElementById('tickerInput').addEventListener('keydown', handleKeydown);
 document.getElementById('tickerInput').addEventListener('input', handleInput);
+document.getElementById('tickerInput').addEventListener('focus', handleFocus);
 document.getElementById('clearButton').addEventListener('click', clearInput);
