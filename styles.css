@@ -61,7 +61,6 @@ body {
 .suggestion-item, .command-item {
     padding: 10px;
     cursor: pointer;
-    border-bottom: 1px solid #ddd; /* Border for individual items */
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -83,18 +82,17 @@ body {
 
 .button {
     padding: 5px 10px;
-    background-color: transparent;
+    background-color: #ddd;
     color: #333; /* Dark grey text */
     text-decoration: none;
-    border: 1px solid #ddd;
+    border: 1px solid transparent; /* Remove border */
     border-radius: 5px;
     font-size: 14px;
     transition: background-color 0.3s, border-color 0.3s;
 }
 
 .button:hover {
-    background-color: #f1f1f1;
-    border-color: #333; /* Dark grey border on hover */
+    background-color: #ccc;
 }
 
 .dropdown-content {
