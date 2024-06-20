@@ -67,6 +67,13 @@ body {
     justify-content: space-between;
 }
 
+.not-found {
+    padding: 10px;
+    text-align: center;
+    color: #ff0000; /* Red text color for "Not Found" */
+    font-weight: bold;
+}
+
 .suggestion-item:last-child, .command-item:last-child {
     border-bottom: none; /* Remove border from last item */
 }
