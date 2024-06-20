@@ -44,15 +44,15 @@ function handleInput() {
             li.innerHTML = `
                 <span>${stock.ticker} - ${stock.name}</span>
                 <div class="buttons">
-                    <a href="https://finance.yahoo.com/quote/${stock.ticker}" class="button" target="_blank">Yahoo</a>
-                    <a href="https://www.google.com/finance/quote/${stock.ticker}" class="button" target="_blank">Google</a>
-                    <a href="https://www.marketwatch.com/investing/stock/${stock.ticker}" class="button" target="_blank">MarketWatch</a>
+                    <a href="https://finance.yahoo.com/quote/${stock.ticker}" class="button" target="_blank">Operations</a>
+                    <a href="https://www.google.com/finance/quote/${stock.ticker}" class="button" target="_blank">Momentum</a>
+                    <a href="https://www.marketwatch.com/investing/stock/${stock.ticker}" class="button" target="_blank">Valuation</a>
                     <div class="dropdown">
                         <button class="button">Other</button>
                         <div class="dropdown-content">
-                            <a href="https://www.bloomberg.com/quote/${stock.ticker}:US" target="_blank">Bloomberg</a>
-                            <a href="https://www.cnbc.com/quotes/${stock.ticker}" target="_blank">CNBC</a>
-                            <a href="https://www.reuters.com/markets/companies/${stock.ticker}" target="_blank">Reuters</a>
+                            <a href="https://www.bloomberg.com/quote/${stock.ticker}:US" target="_blank">Flex Valuation</a>
+                            <a href="https://www.cnbc.com/quotes/${stock.ticker}" target="_blank">Peer Analysis</a>
+                            <a href="https://www.reuters.com/markets/companies/${stock.ticker}" target="_blank">Business Resilience</a>
                         </div>
                     </div>
                 </div>
