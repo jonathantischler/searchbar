@@ -7,8 +7,11 @@ const stockList = [
 ];
 
 const commandList = [
-    { name: 'Google Search', url: 'https://www.google.com' },
-    { name: 'Bing Search', url: 'https://www.bing.com' }
+    { name: 'New Screen', url: 'https://www.google.com' },
+    { name: 'View Existing Screen', url: 'https://www.google.com' },
+    { name: 'New Portfolio', url: 'https://www.bing.com' }
+    { name: 'View Existing Portfolio', url: 'https://www.bing.com' }
+    { name: 'Aggregates', url: 'https://www.bing.com' }
 ];
 
 function handleInput() {
